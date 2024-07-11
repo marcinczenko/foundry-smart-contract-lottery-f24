@@ -1,4 +1,10 @@
-## Foundry
+# foundry-smart-contract-lottery-f24
+
+This is the repo from following the online training [Foundry Smart Contract Lottery](https://github.com/Cyfrin/foundry-full-course-cu?tab=readme-ov-file#section-9-foundry-smart-contract-lottery).
+
+It builds on top of [foundry-fund-me-f24](https://github.com/marcinczenko/foundry-fund-me-f24) and introduces further more advanced topic related to randomness and "upkeeps" allowing the off-chain automation to call our own contracts automatically.
+
+## Foundry (original generated content)
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
