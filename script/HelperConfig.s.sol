@@ -29,6 +29,7 @@ contract HelperConfig is CodeConstants, Script {
         uint256 subscriptionId;
         uint32 callbackGasLimit;
         address link;
+        address account;
     }
 
     uint8 private constant DECIMALS = 8;
@@ -54,7 +55,8 @@ contract HelperConfig is CodeConstants, Script {
             gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
             subscriptionId: 7913878014749387412333169404015339454317919373482546433289430420402927208210,
             callbackGasLimit: 500000,
-            link: 0x779877A7B0D9E8603169DdbD7836e478b4624789
+            link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
+            account: 0x1EEEc2633766A47cCF89193126d1f2Cccf933Eb1
         });
 
         networkConfigs[SEPOLIA_CHAINID] = sepoliaConfig;
@@ -68,7 +70,8 @@ contract HelperConfig is CodeConstants, Script {
             gasLane: 0x8077df514608a09f83e4e8d300645594e5d7234665448ba83f51a50f842bd3d9,
             subscriptionId: 0,
             callbackGasLimit: 500000,
-            link: 0x779877A7B0D9E8603169DdbD7836e478b4624789
+            link: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
+            account: 0x1EEEc2633766A47cCF89193126d1f2Cccf933Eb1
         });
 
         networkConfigs[MAINNET_CHAINID] = mainnetConfig;
@@ -88,7 +91,8 @@ contract HelperConfig is CodeConstants, Script {
             gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
             subscriptionId: 0,
             callbackGasLimit: 500000,
-            link: address(linkToken)
+            link: address(linkToken),
+            account: 0x1804c8AB1F12E6bbf3894d4083f33e07309d1f38
         });
         networkConfigs[block.chainid] = anvilConfig;
     }

@@ -16,14 +16,17 @@ contract DeployRaffle is Script {
         if (activeNetworkConfig.subscriptionId == 0) {
             CreateSubscription createSubscription = new CreateSubscription();
             (activeNetworkConfig.subscriptionId,) =
-                createSubscription.createSubscription(activeNetworkConfig.vrfCoordinator);
+                createSubscription.createSubscription(activeNetworkConfig.vrfCoordinator, activeNetworkConfig.account);
             FundSubscription fundSubscription = new FundSubscription();
             fundSubscription.fundSubscription(
-                activeNetworkConfig.vrfCoordinator, activeNetworkConfig.subscriptionId, activeNetworkConfig.link
+                activeNetworkConfig.vrfCoordinator,
+                activeNetworkConfig.subscriptionId,
+                activeNetworkConfig.link,
+                activeNetworkConfig.account
             );
         }
 
-        vm.startBroadcast();
+        vm.startBroadcast(activeNetworkConfig.account);
         Raffle raffle = new Raffle(
             activeNetworkConfig.entranceFee,
             activeNetworkConfig.interval,
@@ -34,7 +37,12 @@ contract DeployRaffle is Script {
         );
         vm.stopBroadcast();
         AddConsumer addConsumer = new AddConsumer();
-        addConsumer.addConsumer(address(raffle), activeNetworkConfig.vrfCoordinator, activeNetworkConfig.subscriptionId);
+        addConsumer.addConsumer(
+            address(raffle),
+            activeNetworkConfig.vrfCoordinator,
+            activeNetworkConfig.subscriptionId,
+            activeNetworkConfig.account
+        );
         return (raffle, helperConfig);
     }
 
